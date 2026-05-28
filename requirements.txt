@@ -1,0 +1,26 @@
+# ─────────────────────────────────────────────────────────────────────────────
+# ChurnSight AI — Python Dependencies
+# IMPORTANT: scikit-learn, numpy, pandas versions MUST match the training
+# environment in conda_env_v_1_0_0.yml, otherwise the pickled model fails.
+# ─────────────────────────────────────────────────────────────────────────────
+
+# Web framework
+fastapi==0.111.0
+uvicorn[standard]==0.30.1
+gunicorn==22.0.0
+python-multipart==0.0.9
+
+# ML inference (pinned to match training environment exactly)
+scikit-learn==1.5.1
+xgboost==1.5.2
+numpy==1.23.5
+pandas==1.5.3
+joblib==1.4.2
+
+# Azure AutoML runtime — required to deserialize model.pkl (pickle embeds
+# azureml classes from the AutoML featurization pipeline)
+azureml-train-automl-runtime==1.61.0
+
+# setuptools must be pinned to 68.x — versions 70+ break pkg_resources which
+# pmdarima (an azureml dependency) uses at import time
+setuptools==68.2.2
